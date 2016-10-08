@@ -1,6 +1,5 @@
 #MEAN Session Four
 
-<<<<<<< HEAD
 `$cd` to sushi and run `$ sudo npm install`.
 
 Use the default gulp task to run the page in the browser (re-examine the gulpfile). Note that Browser Sync offers a UI:
@@ -28,7 +27,6 @@ Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal
 Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal. As it stands our CSS is not mobile first. 
 
 Review the CSS Tricks page on Flex settings.
->>>>>>> d9f9b23d6c70f3929bf672516f307d2d8f71cdfc
 
 In nav.scss remove `max-width: 140px;` and add:
 
@@ -38,11 +36,9 @@ li {
 }
 ```
 
-<<<<<<< HEAD
 Note that, as it stands, our nav CSS is not mobile first. Move the span contents into the media query.
 =======
 Move the span contents into the media query.
->>>>>>> d9f9b23d6c70f3929bf672516f307d2d8f71cdfc
 
 ```css
 span {
@@ -50,7 +46,6 @@ span {
 }
 ```
 
-<<<<<<< HEAD
 Make display adjustments to the nav bar (padding, icon size) and refactor the media queries so that they are distributed within thier respective selectors. 
 
 Remove the jQuery material from both pages.
@@ -62,7 +57,6 @@ Refactor the media queries so that they are distributed within thier respective 
 Remove the jQuery material from both pages.
 
 Here is the final navigation sass:
->>>>>>> d9f9b23d6c70f3929bf672516f307d2d8f71cdfc
 
 ```css
 .main-nav {
