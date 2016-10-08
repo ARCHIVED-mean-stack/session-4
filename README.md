@@ -134,11 +134,10 @@ gulp.task('deploy', function() {
     host: 'oit2.scps.nyu.edu',
     user: '****',
     pass: '****',
-    remotePath: '/home/p/pezuaj/web'
+    remotePath: '/home/p/<user>/web'
   }));
 });
 ```
-
 
 
 ##Homework
