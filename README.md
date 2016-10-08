@@ -14,17 +14,11 @@ Use the default gulp task to run the page in the browser (re-examine the gulpfil
  ------------------------------------
 ```
 
-##Sushi - Mobile First Navbar
-
-Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal. Review the CSS Tricks page on Flex settings. 
-
-`$cd` to sushi and run `$ sudo npm install`
-
 
 
 ##Sushi - Mobile First Navbar
 
-Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal. As it stands our CSS is not mobile first. 
+Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal. 
 
 Review the CSS Tricks page on Flex settings.
 
@@ -47,12 +41,6 @@ span {
 ```
 
 Make display adjustments to the nav bar (padding, icon size) and refactor the media queries so that they are distributed within thier respective selectors. 
-
-Remove the jQuery material from both pages.
-
-Here is my final navigation sass:
-
-Refactor the media queries so that they are distributed within thier respective slectors.
 
 Remove the jQuery material from both pages.
 
@@ -159,10 +147,6 @@ gulp.task('deploy', function() {
 
 
 ##Reading
-
-[A Simple Gulp’y Workflow For Sass](https://www.sitepoint.com/simple-gulpy-workflow-sass/) - might be worth a look for an alternate workflow with similar features.
-
-[Gulp for Beginners](https://css-tricks.com/gulp-for-beginners/) - another workflow tutorial
 
 Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2. His [Github repo with the book code](https://github.com/dickeyxxx/mean-sample)
 
