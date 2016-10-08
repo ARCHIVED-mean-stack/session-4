@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Image Gallery</title>
+
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<script>
+
+		window.onload = function(){
+			prepareGallery();
+		}
+
+		function prepareGallery() {
+			var gallery = document.getElementById("imageGallery");
+			var links = gallery.getElementsByTagName("a");
+			// console.log(links.length);
+			for ( var i=0; i < links.length; i++ ) {
+				// console.log(i);
+				links[i].onclick = function() {
+					showPicOne(this, links);
+					return false;
+				}
+				links[0].parentNode.className = 'active';
+				showPicOne(links[0]);
+			}
+		}
+		function showPicOne(whichPic, links) {
+			if(links){
+				for ( var i=0; i < links.length; i++ ){
+					links[i].parentNode.className = "";
+				}
+			}
+
+			whichPic.parentNode.className = 'active';
+
+			var source = whichPic.getAttribute("href");
+			var placeholder = document.getElementById("placeholder");
+			placeholder.setAttribute("src",source);
+			var text = whichPic.getAttribute("title");
+			// console.log(text);
+			var description = document.getElementById("description");
+			// console.log(description.childNodes[0].nodeValue); 
+			description.firstChild.nodeValue = text;
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<div>
+		<h1>Image Gallery</h1>
+		<div id="mainNav">
+			<ul id="imageGallery">
+				<li><a href="img/pagoda.jpg" title="Temple by a river">Pagoda</a></li>
+				<li><a href="img/bridge.jpg" title="Shrine">Bridge</a></li>
+				<li><a href="img/bamboo.jpg" title="Bamboo">Bamboo</a></li>
+				<li><a href="img/stairway.jpg" title="Red stairway">Stairway</a></li>
+			</ul>
+		</div>
+
+		<div id="content">
+			<img id="placeholder" src="img/placeholder.gif" alt="Placeholder">
+			<p id="description">Select an image.</p>
+		</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
