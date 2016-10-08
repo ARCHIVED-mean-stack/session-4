@@ -139,23 +139,38 @@ gulp.task('deploy', function() {
 });
 ```
 
+##NODE
 
-##Homework
+A simple node.js [server](https://nodejs.org/en/about/).
 
-1. add gulp-sftp to your package and gulpfile and publish your homework to the server. 
+##Express
 
+Let's look at the canonical "Hellp world" [example](https://expressjs.com/en/starter/hello-world.html). 
 
-##Reading
+Here is the [generator](https://expressjs.com/en/starter/generator.html). Note the directory structure and the use of Jade as a template tool.
 
-Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2. His [Github repo with the book code](https://github.com/dickeyxxx/mean-sample)
+We will be using HTML [static](https://expressjs.com/en/starter/static-files.html) files in our exercise.
 
-[Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+Examine the `package.json` and `app.js` files in `scripting` - a generic Express app pointing to our public folder for static assets.
 
-NOTES
+Note that the js file is now separate and linked at the bottom of our index page.
 
-https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
+##DOM Scripting 
 
-http://daniel.deverell.com/mean-fall-2016/scripting-angular-sample.zip 
+Let's refactor our js to use `classList`:
+
+```js
+...
+links[0].parentNode.classList.add('active');
+...
+links[i].parentNode.classList.remove('active');
+...
+whichPic.parentNode.classList.add('active');
+```
+
+This is a new feature in HTML5 and an example of how advances in js are making jQuery [less and less relevant for wed designers](https://medium.freecodecamp.com/how-to-manipulate-classes-using-the-classlist-api-f876e2f58236#.bmo0nynrj).
+
+Add an Object to our js file:
 
 ```js
 var myObject = {
@@ -182,25 +197,40 @@ var myObject = {
 }
 ]
 };
+```
 
+We will use this object to look at the connection between data (the "model") and the html (the "view").
 
-window.onload = function() {
-    addContent();
-    prepareGallery();
-}
+In the browser's console 
+* `typeof myObject`
+* `myObject.entries`
+* `myObject.entries.length`
+* `myObject.entries[0]`
+* `myObject.entries[0].picture`
 
+Populate the html using data from the object:
+
+```js
 function addContent(){
     var gallery = document.getElementById("imageGallery");
     var links = gallery.getElementsByTagName("a");
     for ( var i=0; i < links.length; i++ ) {
-       links[i].setAttribute('title', myObject.entries[i].title);
-       links[i].setAttribute('href', 'img/' + myObject.entries[i].picture[0]);
-       links[i].firstChild.nodeValue = myObject.entries[i].name;
-   }
+        links[i].setAttribute('title', myObject.entries[i].title);
+        links[i].setAttribute('href', 'img/' + myObject.entries[i].picture[0]);
+        links[i].firstChild.nodeValue = myObject.entries[i].name;
+  }
 };
+```
 
+Add a new node to the end of the html file:
 
+```html
+<div id="test"></div>
+```
 
+Dynamically create a new navigation list
+
+```js
 function addContent(){
     var newgallery = document.createElement('h2')
     var newContent = document.createTextNode("Dynamic Gallery")
@@ -219,9 +249,102 @@ function addContent(){
         newList.appendChild(li)
     };
     document.body.insertBefore(newList, currentLoc); 
-
 };
+
 ```
 
+The amount of work required to develop the page dynamically is one of the reasons frameworks such as Angular have become popular.
 
 
+Before we leave this page let's implement a workflow.
+
+
+Add gulp, gulp-sass, gulp-sourcemaps and brwoser-sync to the list of devDependencies:
+
+```js
+{
+  "name": "pictureviewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Daniel Deverell",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
+
+```
+
+`$ sudo npm install --save-dev <library>`
+
+Since gulp is just JavaScript we can forgoe the use of a gulpfile and continue to use our app.js file for both gulp and express:
+
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var browserSync = require('browser-sync')
+var express = require('express');
+
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+
+var sassSources = './app/public/sass/**/*.scss';
+var sassOutput = './app/public/css';
+var htmlSource = './app/public/**/*.html';
+
+var app = express();
+var port = process.env.PORT || 3000;
+
+gulp.task('sass', function(){
+  return gulp.src(sassSources)
+  .pipe(sourcemaps.init())
+  .pipe(sass(sassOptions).on('error', sass.logError))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest(sassOutput))
+  .pipe(browserSync.stream())
+});
+
+function listening () {
+  browserSync({
+    proxy: 'localhost:' + port
+  });
+    gulp.watch(sassSources, ['sass']);
+    gulp.watch(htmlSource).on('change', browserSync.reload);
+}
+
+
+app.use(express.static('./app/public'));
+
+app.listen(port, listening);
+```
+
+`$ node app.js`
+
+
+##Homework
+
+1. add gulp-sftp to your package and gulpfile and publish your homework to the server. 
+
+
+##Reading
+
+Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2. His [Github repo with the book code](https://github.com/dickeyxxx/mean-sample)
+
+[Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
+
+NOTES
+
+http://book.mixu.net/node/ch5.html
