@@ -17,7 +17,7 @@ Use the default gulp task to run the page in the browser (re-examine the gulpfil
 ##Sushi - Mobile First Navbar
 
 Let's assume [this](http://daniel.deverell.com/mean-fall-2016/gulp/) is our goal. Review the CSS Tricks page on Flex settings. 
-=======
+
 `$cd` to sushi and run `$ sudo npm install`
 
 
@@ -37,7 +37,7 @@ li {
 ```
 
 Note that, as it stands, our nav CSS is not mobile first. Move the span contents into the media query.
-=======
+
 Move the span contents into the media query.
 
 ```css
@@ -51,7 +51,7 @@ Make display adjustments to the nav bar (padding, icon size) and refactor the me
 Remove the jQuery material from both pages.
 
 Here is my final navigation sass:
-=======
+
 Refactor the media queries so that they are distributed within thier respective slectors.
 
 Remove the jQuery material from both pages.
@@ -168,7 +168,7 @@ Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS an
 
 [Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
-================== NOTES ==================
+NOTES
 
 https://github.com/DannyBoyNYC/session-3-dd/tree/gulping-scripts/scripting
 
