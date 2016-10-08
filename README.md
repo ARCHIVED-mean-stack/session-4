@@ -4,7 +4,7 @@
 
 Use the default gulp task to run the page in the browser (re-examine the gulpfile). Note that Browser Sync offers a UI:
 
-```
+```sh
  ------------------------------------
        Local: http://localhost:3000
     External: http://192.168.1.8:3000
