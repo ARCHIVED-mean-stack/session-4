@@ -350,10 +350,12 @@ Run `$ node app.js`
 
 ##Reading
 
-Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapters 1-2. His [Github repo with the book code](https://github.com/dickeyxxx/mean-sample)
+Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapter 3. Please attempt to implement his sample app on your computer. His [Github repo with the book code](https://github.com/dickeyxxx/mean-sample)
 
 [Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
 NOTES
 
 http://book.mixu.net/node/ch5.html
+
+
