@@ -145,7 +145,7 @@ A simple node.js [server](https://nodejs.org/en/about/).
 
 ##Express
 
-Let's look at the canonical "Hellp world" [example](https://expressjs.com/en/starter/hello-world.html). 
+Let's look at the canonical "Hello world" [example](https://expressjs.com/en/starter/hello-world.html). 
 
 Here is the [generator](https://expressjs.com/en/starter/generator.html). Note the directory structure and the use of Jade as a template tool.
 
@@ -168,7 +168,7 @@ links[i].parentNode.classList.remove('active');
 whichPic.parentNode.classList.add('active');
 ```
 
-This is a new feature in HTML5 and an example of how advances in js are making jQuery [less and less relevant for wed designers](https://medium.freecodecamp.com/how-to-manipulate-classes-using-the-classlist-api-f876e2f58236#.bmo0nynrj).
+This is a new feature in HTML5 and an example of how advances in js are making jQuery [less and less relevant for web designers](https://medium.freecodecamp.com/how-to-manipulate-classes-using-the-classlist-api-f876e2f58236#.bmo0nynrj).
 
 Add an Object to our js file:
 
@@ -207,6 +207,15 @@ In the browser's console
 * `myObject.entries.length`
 * `myObject.entries[0]`
 * `myObject.entries[0].picture`
+
+To use this object let's add a new function - `addContent()`:
+
+```js
+window.onload = function(){
+  addContent();
+  prepareGallery();
+};
+```
 
 Populate the html using data from the object:
 
@@ -259,7 +268,7 @@ The amount of work required to develop the page dynamically is one of the reason
 Before we leave this page let's implement a workflow.
 
 
-Add gulp, gulp-sass, gulp-sourcemaps and brwoser-sync to the list of devDependencies:
+Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependencies:
 
 ```js
 {
@@ -287,7 +296,7 @@ Add gulp, gulp-sass, gulp-sourcemaps and brwoser-sync to the list of devDependen
 
 `$ sudo npm install --save-dev <library>`
 
-Since gulp is just JavaScript we can forgoe the use of a gulpfile and continue to use our app.js file for both gulp and express:
+Since gulp is just JavaScript we can forgo the use of a gulpfile and continue to use our app.js file for both gulp and express. Note the use of proxy for browser sync:
 
 ```js
 var gulp = require('gulp');
@@ -331,12 +340,12 @@ app.use(express.static('./app/public'));
 app.listen(port, listening);
 ```
 
-`$ node app.js`
+Run `$ node app.js`
 
 
 ##Homework
 
-1. add gulp-sftp to your package and gulpfile and publish your homework to the server. 
+1. add gulp-sftp to your homework package.json file, edit your gulpfile and publish your homework to a server. 
 
 
 ##Reading
