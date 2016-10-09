@@ -115,11 +115,16 @@ Here is the final navigation sass:
 * e.g. devereld // dd123890
 * Hostname is oit2.scps.nyu.edu
 
-Try using an FTP client and then use SSH.
+Test to see if your account is active by entering this URL into a new browser tab (use your username after the tilde):
+```
+http://oit2.scps.nyu.edu/~pezuaj/
+```
+
+Try using an FTP client and then use SSH and cd into the web directory:
 
 `$ ssh pezuaj@oit2.scps.nyu.edu`
 
-Note: you can use `$git clone ... ` at this point if you wish.
+Only the web directory has been configured to host external http. Note: you can use `$git clone <path to git file on github> ` in this folder to deploy a project. Here we will be deploying directly from your working directory on your computer.
 
 `$ pwd`
 
@@ -154,6 +159,140 @@ We will be using HTML [static](https://expressjs.com/en/starter/static-files.htm
 Examine the `package.json` and `app.js` files in `scripting` - a generic Express app pointing to our public folder for static assets.
 
 Note that the js file is now separate and linked at the bottom of our index page.
+
+###Setup
+
+Before we edit this page let's implement our workflow.
+
+Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependencies:
+
+```js
+{
+  "name": "pictureviewer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Daniel Deverell",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.16.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}
+
+```
+
+Since gulp is just JavaScript we can forgo the use of a gulpfile and continue to use our app.js file for both gulp and express. Note the use of [proxy and a specific browser](https://www.browsersync.io/docs/options/#option-browser) for browser sync:
+
+```js
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
+var browserSync = require('browser-sync')
+var express = require('express');
+
+var sassOptions = {
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+
+var sassSources = './app/public/sass/**/*.scss';
+var sassOutput = './app/public/css';
+var htmlSource = './app/public/**/*.html';
+
+var app = express();
+var port = process.env.PORT || 3000;
+
+gulp.task('sass', function(){
+  return gulp.src(sassSources)
+  .pipe(sourcemaps.init())
+  .pipe(sass(sassOptions).on('error', sass.logError))
+  .pipe(sourcemaps.write('.'))
+  .pipe(gulp.dest(sassOutput))
+  .pipe(browserSync.stream())
+});
+
+function listening () {
+  browserSync({
+    proxy: 'localhost:' + port,
+    browser: "google chrome"
+  });
+    gulp.watch(sassSources, ['sass']);
+    gulp.watch(htmlSource).on('change', browserSync.reload);
+}
+
+
+app.use(express.static('./app/public'));
+
+app.listen(port, listening);
+```
+
+Run `$ sudo npm install --save-dev <library>`
+
+Run `$ node app.js` and test to ensure that both sass and html changes refresh the browser and that a css .map file is created. We are not watching the js directory yet so we still have to do some manual refreshing.
+
+###Adjust Formatting
+
+Since we are working mobile first let's set up the display in a narrow browser.
+
+```css
+body {
+  font: 1em/1.5 Helvetica, arial, sans-serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.active img {
+  border-color: #666;
+}
+
+img {
+  width: 100%;
+  border: 4px solid #bbb;
+}
+```
+Use flexbox for the image gallery
+
+```css
+#imageGallery {
+  list-style: none;
+  display: flex;
+}
+
+#imageGallery li {
+  flex: 1 1 auto;
+}
+```
+Position the caption so that it overlays the main image:
+
+```css
+#content {
+  position: relative;
+}
+#content img {
+  border: none;
+}
+#content p {
+  background-color: rgba(0,0,0,0.5);
+  position: absolute;
+  bottom: 0.5rem;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+}
+```
 
 ##DOM Scripting 
 
@@ -265,82 +404,6 @@ function addContent(){
 The amount of work required to develop the page dynamically is one of the reasons frameworks such as Angular have become popular.
 
 
-Before we leave this page let's implement a workflow.
-
-
-Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependencies:
-
-```js
-{
-  "name": "pictureviewer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "start": "node app.js"
-  },
-  "author": "Daniel Deverell",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.14.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.16.0",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0"
-  }
-}
-
-```
-
-`$ sudo npm install --save-dev <library>`
-
-Since gulp is just JavaScript we can forgo the use of a gulpfile and continue to use our app.js file for both gulp and express. Note the use of proxy for browser sync:
-
-```js
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var browserSync = require('browser-sync')
-var express = require('express');
-
-var sassOptions = {
-  errLogToConsole: true,
-  outputStyle: 'expanded'
-};
-
-var sassSources = './app/public/sass/**/*.scss';
-var sassOutput = './app/public/css';
-var htmlSource = './app/public/**/*.html';
-
-var app = express();
-var port = process.env.PORT || 3000;
-
-gulp.task('sass', function(){
-  return gulp.src(sassSources)
-  .pipe(sourcemaps.init())
-  .pipe(sass(sassOptions).on('error', sass.logError))
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(sassOutput))
-  .pipe(browserSync.stream())
-});
-
-function listening () {
-  browserSync({
-    proxy: 'localhost:' + port
-  });
-    gulp.watch(sassSources, ['sass']);
-    gulp.watch(htmlSource).on('change', browserSync.reload);
-}
-
-
-app.use(express.static('./app/public'));
-
-app.listen(port, listening);
-```
-
-Run `$ node app.js`
 
 
 ##Homework
