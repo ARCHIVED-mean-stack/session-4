@@ -263,7 +263,7 @@ img {
   border: 4px solid #bbb;
 }
 ```
-Use flexbox for the image gallery
+Use [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for the image gallery
 
 ```css
 #imageGallery {
@@ -342,10 +342,12 @@ We will use this object to look at the connection between data (the "model") and
 
 In the browser's console 
 * `typeof myObject`
+* `myObject`
 * `myObject.entries`
 * `myObject.entries.length`
 * `myObject.entries[0]`
 * `myObject.entries[0].picture`
+* `myObject.entries[0].picture[0]`
 
 To use this object let's add a new function - `addContent()`:
 
@@ -403,7 +405,34 @@ function addContent(){
 
 The amount of work required to develop the page dynamically is one of the reasons frameworks such as Angular have become popular.
 
+##Angularizing our Gallery
 
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Gallery</title>
+<script src="https://code.angularjs.org/1.2.3/angular.js"></script>
+<script src="js/alt.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body ng-app>
+    <h1>Image Gallery</h1>
+    <div ng-controller="ListController">
+        <ul id="imageGallery">
+            <li ng-repeat="entry in entries">
+                <a href="img/{{entry.picture[0]}}" title="{{entry.title}}">{{ entry.name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div id="content">
+      <img id="placeholder" src="img/placeholder.gif" alt="Placeholder">
+      <p id="description">Select an image.</p>
+    </div>
+</body>
+</html>
+```
 
 
 ##Homework
