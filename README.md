@@ -470,6 +470,17 @@ function ListController( $scope ) {
   $scope.entries = [
   ...
 ```
+Use the thumbnails:
+```html
+<a href="img/{{entry.picture[1]}}" title="{{entry.title}}"><img ng-src="img/{{ entry.picture[0] }}"></a>
+```
+```js
+"picture": ["pagoda-tn.jpg","pagoda.jpg"]
+...
+"picture": ["bridge-tn.jpg","bridge.jpg"]
+...
+```
+
 
 
 ##Homework
