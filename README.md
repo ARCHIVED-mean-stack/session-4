@@ -507,7 +507,7 @@ Use the thumbnails:
 
 ##Homework
 
-1. add gulp-sftp to your homework package.json file, edit your gulpfile and publish your homework to a server. Note: a final rendering of this ongoing project consistutes your midterm project and must be available both as a website on a server for viewing and a github repo. The midterm projects are due on the seventh class.
+1. add gulp-sftp to your homework package.json file, edit your gulpfile and publish your homework to a server. Note: a final rendering of this ongoing project will consistute your midterm project and must be available both as a website on a server for viewing and a github repo. The midterm projects are due on the seventh class and must be an up to date showcase of the techniques discussed in class up to that point.
 
 
 ##Reading
