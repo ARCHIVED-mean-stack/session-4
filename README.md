@@ -162,7 +162,7 @@ Note that the js file is now separate and linked at the bottom of our index page
 
 ###Setup
 
-Before we edit this page let's implement our workflow.
+Close all tabs in Sublime relating to sushi and `cd` into scripting. Before we begin editing let's implement our workflow.
 
 Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependencies:
 
@@ -235,9 +235,11 @@ app.use(express.static('./app/public'));
 app.listen(port, listening);
 ```
 
-Run `$ sudo npm install --save-dev <library>`
+Note: by editing the package.json file directly  we do not need to run `$ sudo npm install --save-dev <library>` for each of the packages. 
 
-Run `$ node app.js` and test to ensure that both sass and html changes refresh the browser and that a css .map file is created. We are not watching the js directory yet so we still have to do some manual refreshing.
+Run `$ node app.js` and test to ensure that any html changes refresh the browser. WE have not yet created our SASS directory so this will need to be done in accordance with the sassSources variable in app.js. 
+
+We are not watching the js directory yet so we still have to do some manual refreshing.
 
 ###Adjust Formatting
 
@@ -371,6 +373,7 @@ function addContent(){
   }
 };
 ```
+Now the titles are back in, the image src and the title are being populated from the object (try `"picture": ["pagoda-tn.jpg"]` to test).
 
 Add a new node to the end of the html file:
 
@@ -378,7 +381,7 @@ Add a new node to the end of the html file:
 <div id="test"></div>
 ```
 
-Dynamically create a new navigation list
+Comment out the addContent() function and let's see how a html block for a new navigation list might be dynamically created:
 
 ```js
 function addContent(){
@@ -407,6 +410,18 @@ The amount of work required to develop the page dynamically is one of the reason
 
 ##Angularizing our Gallery
 
+Switch to `http://localhost:3001/alt.html` in the browser and examine the code.
+
+* change the script link to point to `js/alt.js`
+
+Examine alt.js.
+
+* note the use of a function ListController and $scope
+
+Add a link to angular js in alt.html.
+
+* note the source directory `https://code.angularjs.org/1.2.3/`
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -417,11 +432,11 @@ The amount of work required to develop the page dynamically is one of the reason
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body ng-app>
+<body data-ng-app>
     <h1>Image Gallery</h1>
-    <div ng-controller="ListController">
+    <div data-ng-controller="ListController">
         <ul id="imageGallery">
-            <li ng-repeat="entry in entries">
+            <li data-ng-repeat="entry in entries">
                 <a href="img/{{entry.picture[0]}}" title="{{entry.title}}">{{ entry.name }}</a>
             </li>
         </ul>
@@ -432,6 +447,28 @@ The amount of work required to develop the page dynamically is one of the reason
     </div>
 </body>
 </html>
+```
+HTML5 introduced [the `data-` attribute](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes). 
+
+Angular uses this to extend html with directives (data-ng-app, data-ng-controller, data-ng-repeat)
+
+* `ng-app` directive defines an AngularJS application, here it tells AngularJS that the `<body>` element is the "owner" of a (currently unnamed) AngularJS application
+
+AngularJS expressions are written inside double braces: `{{ expression }}`, e.g. `<p>My first expression: {{ 5 + 5 }}</p>`. Here we are using them to 'bind' data.
+
+The ng-app directive defines the application, the ng-controller directive defines the controller.
+
+
+```html
+<body data-ng-app="myApp">
+```
+
+```js
+var app = angular.module('myApp', []);
+
+function ListController( $scope ) {
+  $scope.entries = [
+  ...
 ```
 
 
