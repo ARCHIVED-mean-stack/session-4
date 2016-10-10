@@ -246,8 +246,13 @@ We are not watching the js directory yet so we still have to do some manual refr
 Since we are working mobile first let's set up the display in a narrow browser.
 
 ```css
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
+
 body {
-  font: 1em/1.5 Helvetica, arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -484,7 +489,7 @@ app.controller("ListController", function( $scope ) {
   {
 ```
 
-The scope is the binding between the HTML (view) and the JavaScript (controller). When you make a controller in AngularJS, you pass the $scope object as an argument.
+The scope is the binding between the HTML (view) and the JavaScript (controller). When you make a controller in AngularJS, you pass the $scope object as an argument. When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.
 
 
 Use the thumbnails:
