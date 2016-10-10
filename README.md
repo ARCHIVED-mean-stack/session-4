@@ -507,12 +507,12 @@ Use the thumbnails:
 
 ##Homework
 
-1. add gulp-sftp to your homework package.json file, edit your gulpfile and publish your homework to a server. 
+1. add gulp-sftp to your homework package.json file, edit your gulpfile and publish your homework to a server. Note: a final rendering of this ongoing project consistutes your midterm project and must be available both as a website on a server for viewing and a github repo. The midterm projects are due on the seventh class.
 
 
 ##Reading
 
-Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapter 3. Please attempt to implement his sample app on your computer. Here's his [Github repo with sample code](https://github.com/dickeyxxx/mean-sample)
+Dickey - Write Modern Web Apps with the MEAN Stack: Mongo, Express, AngularJS and Node.js, chapter 3. Please attempt to implement his sample app on your computer. Here's his [Github repo with sample code](https://github.com/dickeyxxx/mean-sample). Be sure to look at the branches.
 
 [Mozilla on DOM Scripting](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
