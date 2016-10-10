@@ -470,6 +470,23 @@ function ListController( $scope ) {
   $scope.entries = [
   ...
 ```
+
+The module is a 
+* container for the different parts of an Angular application
+* container for the application controllers
+* controllers always belong to a module:
+
+```js
+var app = angular.module('myApp', []);
+
+app.controller("ListController", function( $scope ) {
+  $scope.entries = [
+  {
+```
+
+The scope is the binding between the HTML (view) and the JavaScript (controller). When you make a controller in AngularJS, you pass the $scope object as an argument.
+
+
 Use the thumbnails:
 ```html
 <a href="img/{{entry.picture[1]}}" title="{{entry.title}}"><img ng-src="img/{{ entry.picture[0] }}"></a>
