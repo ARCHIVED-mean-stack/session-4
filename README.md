@@ -192,7 +192,7 @@ Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependen
 
 ```
 
-Since gulp is just JavaScript we can forgo the use of a gulpfile and continue to use our app.js file for both gulp and express. Note the use of [proxy and a specific browser](https://www.browsersync.io/docs/options/#option-browser) for browser sync:
+Since gulp is just JavaScript we can forgo the use of a gulpfile and to use our app.js file for both gulp and express. Note the use of [proxy and a specific browser](https://www.browsersync.io/docs/options/#option-browser) for browser sync:
 
 ```js
 var gulp = require('gulp');
@@ -239,9 +239,9 @@ app.listen(port, listening);
 
 Note: by editing the package.json file directly  we do not need to run `$ sudo npm install --save-dev <library>` for each of the packages. 
 
-Run `$ node app.js` and test to ensure that any html changes refresh the browser. WE have not yet created our SASS directory so this will need to be done in accordance with the sassSources variable in app.js. 
+Run `$ node app.js` and test to ensure that any html changes refresh the browser. We have not yet created our SASS directory so this will need to be done in accordance with the sassSources variable in app.js. 
 
-We are not watching the js directory yet so we still have to do some manual refreshing.
+Note: we are not watching the js directory yet so we still have to do some manual refreshing.
 
 ###Adjust Formatting
 
