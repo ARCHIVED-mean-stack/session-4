@@ -144,6 +144,8 @@ gulp.task('deploy', function() {
 });
 ```
 
+NOTE: if you plan on storing these files as a public Github repo you may wish to obscure the username and password or add your gulpfile to a .gitignore list.
+
 ##NODE
 
 A simple node.js [server](https://nodejs.org/en/about/).
