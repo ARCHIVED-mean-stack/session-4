@@ -5,13 +5,13 @@
 Use the default gulp task to run the page in the browser (re-examine the gulpfile). Note that Browser Sync offers a UI:
 
 ```sh
- ------------------------------------
-       Local: http://localhost:3000
-    External: http://192.168.1.8:3000
- ------------------------------------
-          UI: http://localhost:3001
- UI External: http://192.168.1.8:3001
- ------------------------------------
+------------------------------------
+Local: http://localhost:3000
+External: http://192.168.1.8:3000
+------------------------------------
+UI: http://localhost:3001
+UI External: http://192.168.1.8:3001
+------------------------------------
 ```
 
 
@@ -26,7 +26,7 @@ In nav.scss remove `max-width: 140px;` and add:
 
 ```css
 li {
-  flex: 1 1 auto;
+flex: 1 1 auto;
 }
 ```
 
@@ -36,7 +36,7 @@ Move the span contents into the media query.
 
 ```css
 span {
-  display: none;
+display: none;
 }
 ```
 
@@ -48,61 +48,61 @@ Here is the final navigation sass:
 
 ```css
 .main-nav {
-  background: #eee;
-  margin-bottom: 1em;
+background: #eee;
+margin-bottom: 1em;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  li {
-    flex: 1 1 auto;
-  }
-  a {
-    padding: 0.5rem 0.25rem;
-    font-size: 1rem;
-    font-weight: bold;
-    display: flex;
-    color: $reddish;
-    background-color: $tan;
-    &:hover, &:focus {
-      background-color: $reddish;
-      color: $white;
-      svg {
-        fill: $white; 
-      }
-      span {
-        color: $white; 
-      }
-    }
-    @media (min-width: $break-one) {
-      font-size: 1.5rem;
-      padding: 1.25rem 0.5rem;
-    }
-  }
-  span {
-    display: none;
-    @media (min-width: $break-one) {
-      display: block;
-      font-size: 0.875rem;
-      font-weight: normal;
-      color: #888;
-      margin: 0.25rem 0 0 0;
-    }
-  }
-  .icon {
-    width: 18px;
-    height: 18px;
-    float: left;
-    margin-right: 0.5rem;
-    fill: #999;
-    @media (min-width: $break-one) {
-      width: 40px;
-      height: 40px;
-      margin-right: 1rem;
-    }
-  }
+ul {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+li {
+flex: 1 1 auto;
+}
+a {
+padding: 0.5rem 0.25rem;
+font-size: 1rem;
+font-weight: bold;
+display: flex;
+color: $reddish;
+background-color: $tan;
+&:hover, &:focus {
+background-color: $reddish;
+color: $white;
+svg {
+fill: $white; 
+}
+span {
+color: $white; 
+}
+}
+@media (min-width: $break-one) {
+font-size: 1.5rem;
+padding: 1.25rem 0.5rem;
+}
+}
+span {
+display: none;
+@media (min-width: $break-one) {
+display: block;
+font-size: 0.875rem;
+font-weight: normal;
+color: #888;
+margin: 0.25rem 0 0 0;
+}
+}
+.icon {
+width: 18px;
+height: 18px;
+float: left;
+margin-right: 0.5rem;
+fill: #999;
+@media (min-width: $break-one) {
+width: 40px;
+height: 40px;
+margin-right: 1rem;
+}
+}
 }
 ```
 
@@ -134,13 +134,13 @@ Only the web directory has been configured to host external http. Note: you can 
 var sftp = require('gulp-sftp');
 
 gulp.task('deploy', function() {
-  return gulp.src('./app/**/*')
-  .pipe(sftp({
-    host: 'oit2.scps.nyu.edu',
-    user: '****',
-    pass: '****',
-    remotePath: '/home/p/<user>/web'
-  }));
+return gulp.src('./app/**/*')
+.pipe(sftp({
+host: 'oit2.scps.nyu.edu',
+user: '****',
+pass: '****',
+remotePath: '/home/p/<user>/web'
+}));
 });
 ```
 
@@ -177,19 +177,19 @@ Add gulp, gulp-sass, gulp-sourcemaps and browser-sync to the list of devDependen
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
-  },
-  "author": "Daniel Deverell",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.14.0"
-  },
-  "devDependencies": {
-    "browser-sync": "^2.16.0",
-    "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0"
-  }
+  "start": "node app.js"
+},
+"author": "Daniel Deverell",
+"license": "MIT",
+"dependencies": {
+"express": "^4.14.0"
+},
+"devDependencies": {
+"browser-sync": "^2.16.0",
+"gulp": "^3.9.1",
+"gulp-sass": "^2.3.2",
+"gulp-sourcemaps": "^1.6.0"
+}
 }
 
 ```
@@ -204,8 +204,8 @@ var browserSync = require('browser-sync')
 var express = require('express');
 
 var sassOptions = {
-  errLogToConsole: true,
-  outputStyle: 'expanded'
+errLogToConsole: true,
+outputStyle: 'expanded'
 };
 
 var sassSources = './app/public/sass/**/*.scss';
@@ -216,21 +216,21 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 gulp.task('sass', function(){
-  return gulp.src(sassSources)
-  .pipe(sourcemaps.init())
-  .pipe(sass(sassOptions).on('error', sass.logError))
-  .pipe(sourcemaps.write('.'))
-  .pipe(gulp.dest(sassOutput))
-  .pipe(browserSync.stream())
+return gulp.src(sassSources)
+.pipe(sourcemaps.init())
+.pipe(sass(sassOptions).on('error', sass.logError))
+.pipe(sourcemaps.write('.'))
+.pipe(gulp.dest(sassOutput))
+.pipe(browserSync.stream())
 });
 
 function listening () {
-  browserSync({
-    proxy: 'localhost:' + port,
-    browser: "google chrome"
-  });
-    gulp.watch(sassSources, ['sass']);
-    gulp.watch(htmlSource).on('change', browserSync.reload);
+browserSync({
+proxy: 'localhost:' + port,
+browser: "google chrome"
+});
+gulp.watch(sassSources, ['sass']);
+gulp.watch(htmlSource).on('change', browserSync.reload);
 }
 
 
@@ -257,25 +257,25 @@ Since we are working mobile first let's set up the display in a narrow browser.
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,700);
 
 body {
-  font-size: 100%;
-  line-height: 1.5;
-  font-family: 'Roboto', sans-serif;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+font-size: 100%;
+line-height: 1.5;
+font-family: 'Roboto', sans-serif;
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+padding: 0;
+margin: 0;
+box-sizing: border-box;
 }
 
 img {
-  width: 100%;
-  border: 4px solid #bbb;
+width: 100%;
+border: 4px solid #bbb;
 }
 
 .active img {
-  border-color: #666;
+border-color: #666;
 }
 
 
@@ -284,30 +284,30 @@ Use [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for the i
 
 ```css
 #imageGallery {
-  list-style: none;
-  display: flex;
+list-style: none;
+display: flex;
 }
 
 #imageGallery li {
-  flex: 1 1 auto;
+flex: 1 1 auto;
 }
 ```
 Position the caption so that it overlays the main image:
 
 ```css
 #content {
-  position: relative;
+position: relative;
 }
 #content img {
-  border: none;
+border: none;
 }
 #content p {
-  background-color: rgba(0,0,0,0.5);
-  position: absolute;
-  bottom: 0.5rem;
-  color: white;
-  padding: 1rem;
-  width: 100%;
+background-color: rgba(0,0,0,0.5);
+position: absolute;
+bottom: 0.5rem;
+color: white;
+padding: 1rem;
+width: 100%;
 }
 ```
 
@@ -330,7 +330,7 @@ Add an Object to our js file:
 
 ```js
 var myObject = {
-  "entries":[
+"entries":[
 {
   "title": "Yellow pagoda by a river.",
   "name": "Yellow Pagoda",
@@ -370,8 +370,8 @@ To use this object let's add a new function - `addContent()`:
 
 ```js
 window.onload = function(){
-  addContent();
-  prepareGallery();
+addContent();
+prepareGallery();
 };
 ```
 
@@ -379,13 +379,13 @@ Populate the html using data from the object:
 
 ```js
 function addContent(){
-    var gallery = document.getElementById("imageGallery");
-    var links = gallery.getElementsByTagName("a");
-    for ( var i=0; i < links.length; i++ ) {
-        links[i].setAttribute('title', myObject.entries[i].title);
-        links[i].setAttribute('href', 'img/' + myObject.entries[i].picture[0]);
-        links[i].firstChild.nodeValue = myObject.entries[i].name;
-  }
+var gallery = document.getElementById("imageGallery");
+var links = gallery.getElementsByTagName("a");
+for ( var i=0; i < links.length; i++ ) {
+links[i].setAttribute('title', myObject.entries[i].title);
+links[i].setAttribute('href', 'img/' + myObject.entries[i].picture[0]);
+links[i].firstChild.nodeValue = myObject.entries[i].name;
+}
 };
 ```
 Now the titles are back in, the image src and the title are being populated from the object (try `"picture": ["pagoda-tn.jpg"]` to test).
@@ -400,23 +400,23 @@ Comment out the addContent() function and let's see how a html block for a new n
 
 ```js
 function addContent(){
-    var newgallery = document.createElement('h2')
-    var newContent = document.createTextNode("Dynamic Gallery")
-    newgallery.appendChild(newContent)
-    var currentLoc = document.getElementById('test')
-    document.body.insertBefore(newgallery, currentLoc)
-    var newList = document.createElement('ul')
-    document.body.appendChild(newList)
-    for (var i=0; i < myObject.entries.length; i++){
-        var li = document.createElement("li")
-        var a = document.createElement("a")
-        a.innerHTML = myObject.entries[i].name
-        a.setAttribute('href', 'img/' + myObject.entries[i].picture[0])
-        a.setAttribute('title', myObject.entries[i].title)
-        li.appendChild(a)
-        newList.appendChild(li)
-    };
-    document.body.insertBefore(newList, currentLoc); 
+var newgallery = document.createElement('h2')
+var newContent = document.createTextNode("Dynamic Gallery")
+newgallery.appendChild(newContent)
+var currentLoc = document.getElementById('test')
+document.body.insertBefore(newgallery, currentLoc)
+var newList = document.createElement('ul')
+document.body.appendChild(newList)
+for (var i=0; i < myObject.entries.length; i++){
+var li = document.createElement("li")
+var a = document.createElement("a")
+a.innerHTML = myObject.entries[i].name
+a.setAttribute('href', 'img/' + myObject.entries[i].picture[0])
+a.setAttribute('title', myObject.entries[i].title)
+li.appendChild(a)
+newList.appendChild(li)
+};
+document.body.insertBefore(newList, currentLoc); 
 };
 
 ```
@@ -442,24 +442,24 @@ Add a link to angular js in alt.html.
 <html>
 <head>
   <title>Image Gallery</title>
-<script src="https://code.angularjs.org/1.2.3/angular.js"></script>
-<script src="js/alt.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.angularjs.org/1.2.3/angular.js"></script>
+  <script src="js/alt.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body data-ng-app>
-    <h1>Image Gallery</h1>
-    <div data-ng-controller="ListController">
-        <ul id="imageGallery">
-            <li data-ng-repeat="entry in entries">
-                <a href="img/{{entry.picture[0]}}" title="{{entry.title}}">{{ entry.name }}</a>
-            </li>
-        </ul>
-    </div>
-    <div id="content">
-      <img id="placeholder" src="img/placeholder.gif" alt="Placeholder">
-      <p id="description">Select an image.</p>
-    </div>
+  <h1>Image Gallery</h1>
+  <div data-ng-controller="ListController">
+    <ul id="imageGallery">
+      <li data-ng-repeat="entry in entries">
+        <a href="img/{{entry.picture[0]}}" title="{{entry.title}}">{{ entry.name }}</a>
+      </li>
+    </ul>
+  </div>
+  <div id="content">
+    <img id="placeholder" src="img/placeholder.gif" alt="Placeholder">
+    <p id="description">Select an image.</p>
+  </div>
 </body>
 </html>
 ```
@@ -476,30 +476,30 @@ If the ng-app directive defines the application, the ng-controller directive def
 
 ```html
 <body data-ng-app="myApp">
-```
+  ```
 
-```js
-var app = angular.module('myApp', []);
+  ```js
+  var app = angular.module('myApp', []);
 
-function ListController( $scope ) {
+  function ListController( $scope ) {
   $scope.entries = [
   ...
-```
+  ```
 
-The module is: 
-* a container for the different parts of an Angular application
-* a container for the application controllers
+  The module is: 
+  * a container for the different parts of an Angular application
+  * a container for the application controllers
 
-Controllers always belong to a module:
+  Controllers always belong to a module:
 
-```js
-var app = angular.module('myApp', []);
+  ```js
+  var app = angular.module('myApp', []);
 
-app.controller("ListController", function( $scope ) {
+  app.controller("ListController", function( $scope ) {
   $scope.entries = [
   {
-  }]
-  )};
+}]
+)};
 ```
 * controllers control the data of the application
 * controllers are JavaScript objects ({ ... })
@@ -550,16 +550,20 @@ https://github.com/scotch-io/react-tweets/issues/22
     <input type="text" ng-model="greeting.greeter" size="30"/>
     <input type="text" ng-model="greeting.message" size="30"/>
 
-    <P>{{greeting.greeter }} says "{{ greeting.message }}"</P>
+    <p>{{greeting.greeter }} says "{{ greeting.message }}"</p>
     
+
+    <p>Data binding in AngularJS is the synchronization between the model and the view.</p>
+
+    <p>When data in the model changes, the view reflects the change, and when data in the view changes, the model is updated as well. This happens immediately and automatically, which makes sure that the model and the view is updated at all times.</p>
   </div>
   <script>
-  var app = angular.module('myApp', []);
-  app.controller('myCtrl', function($scope) {
-    $scope.firstname = "John";
-    $scope.lastname = "Doe";
-    $scope.greeting = { greeter: 'Daniel' , message: 'Hello World' };
-  });
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.firstname = "John";
+      $scope.lastname = "Doe";
+      $scope.greeting = { greeter: 'Daniel' , message: 'Hello World' };
+    });
   </script>
 
 </body>
