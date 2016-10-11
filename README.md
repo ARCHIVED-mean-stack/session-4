@@ -152,7 +152,7 @@ A simple node.js [server](https://nodejs.org/en/about/).
 
 Let's look at the canonical "Hello world" [example](https://expressjs.com/en/starter/hello-world.html). 
 
-Here is the [generator](https://expressjs.com/en/starter/generator.html). Note the directory structure and the use of Jade as a template tool.
+Here is the [generator](https://expressjs.com/en/starter/generator.html). Note the directory structure and the use of [Jade](http://learnjade.com) as a template tool. Here's a [Jade converter](http://www.html2jade.org).
 
 We will be using HTML [static](https://expressjs.com/en/starter/static-files.html) files in our exercise.
 
