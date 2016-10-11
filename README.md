@@ -478,10 +478,11 @@ function ListController( $scope ) {
   ...
 ```
 
-The module is a 
-* container for the different parts of an Angular application
-* container for the application controllers
-* controllers always belong to a module:
+The module is: 
+* a container for the different parts of an Angular application
+* a container for the application controllers
+
+Controllers always belong to a module:
 
 ```js
 var app = angular.module('myApp', []);
@@ -505,7 +506,7 @@ Use the thumbnails:
 ...
 ```
 
-
+* add js support to the gulp process and use minification
 
 ##Homework
 
