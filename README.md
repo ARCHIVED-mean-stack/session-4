@@ -463,7 +463,7 @@ Angular uses this to extend html with directives (data-ng-app, data-ng-controlle
 
 AngularJS expressions are written inside double braces: `{{ expression }}`, e.g. `<p>My first expression: {{ 5 + 5 }}</p>`. Here we are using them to 'bind' data.
 
-The ng-app directive defines the application, the ng-controller directive defines the controller.
+If the ng-app directive defines the application, the ng-controller directive defines the controller:
 
 
 ```html
@@ -490,7 +490,11 @@ var app = angular.module('myApp', []);
 app.controller("ListController", function( $scope ) {
   $scope.entries = [
   {
+
+  )};
 ```
+* controllers control the data of the application
+* controllers are JavaScript objects ({ ... })
 
 The scope is the binding between the HTML (view) and the JavaScript (controller). When you make a controller in AngularJS, you pass the $scope object as an argument. When adding properties to the $scope object in the controller, the view (HTML) gets access to these properties.
 
