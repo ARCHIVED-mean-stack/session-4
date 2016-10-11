@@ -162,7 +162,9 @@ Examine the `package.json` and `app.js` files in `scripting` - a generic Express
 
 Note that the js file is now separate and linked at the bottom of our index page.
 
-###Setup
+###Setup Scripting
+
+Create a new empty git repo, add, commit, push and create a new branch - ver2.
 
 Close all tabs in Sublime relating to sushi and `cd` into scripting. Before we begin editing let's implement our workflow.
 
@@ -237,13 +239,17 @@ app.use(express.static('./app/public'));
 app.listen(port, listening);
 ```
 
-Note: by editing the package.json file directly  we do not need to run `$ sudo npm install --save-dev <library>` for each of the packages. 
+Note: by editing the package.json file directly  we do not need to run `$ sudo npm install --save-dev <library>` for each of the packages. We only need to run `$sudo npm install`.
 
 Run `$ node app.js` and test to ensure that any html changes refresh the browser. We have not yet created our SASS directory so this will need to be done in accordance with the sassSources variable in app.js. 
 
 Note: we are not watching the js directory yet so we still have to do some manual refreshing.
 
 ###Adjust Formatting
+
+Create the sass directory in public and save the existng css file there as styles.scss. 
+
+Note: you may need to start and stop the server to get these changes worked into the gulp system.
 
 Since we are working mobile first let's set up the display in a narrow browser.
 
@@ -263,14 +269,16 @@ body {
   box-sizing: border-box;
 }
 
-.active img {
-  border-color: #666;
-}
-
 img {
   width: 100%;
   border: 4px solid #bbb;
 }
+
+.active img {
+  border-color: #666;
+}
+
+
 ```
 Use [flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for the image gallery
 
@@ -305,7 +313,7 @@ Position the caption so that it overlays the main image:
 
 ##DOM Scripting 
 
-Let's refactor our js to use `classList`:
+Let's refactor scripts.js to use `classList`:
 
 ```js
 ...
@@ -490,7 +498,7 @@ var app = angular.module('myApp', []);
 app.controller("ListController", function( $scope ) {
   $scope.entries = [
   {
-
+  }]
   )};
 ```
 * controllers control the data of the application
@@ -509,7 +517,7 @@ Use the thumbnails:
 "picture": ["bridge-tn.jpg","bridge.jpg"]
 ...
 ```
-
+* post to github
 * add js support to the gulp process and use minification
 
 ##Homework
