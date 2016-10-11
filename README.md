@@ -537,4 +537,34 @@ http://book.mixu.net/node/ch5.html
 
 https://github.com/scotch-io/react-tweets/issues/22
 
+```HTML
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+  <div ng-app="myApp" ng-controller="myCtrl">
+    Name: <input ng-model="firstname">
+    <h1>{{firstname}}</h1>
+
+    <input type="text" ng-model="greeting.greeter" size="30"/>
+    <input type="text" ng-model="greeting.message" size="30"/>
+
+    <P>{{greeting.greeter }} says "{{ greeting.message }}"</P>
+    
+  </div>
+  <script>
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+    $scope.firstname = "John";
+    $scope.lastname = "Doe";
+    $scope.greeting = { greeter: 'Daniel' , message: 'Hello World' };
+  });
+  </script>
+
+</body>
+</html>
+
+```
+
 
